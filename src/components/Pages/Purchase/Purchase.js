@@ -50,8 +50,6 @@ const Purchase = () => {
             body: JSON.stringify()
         })
     }
-
-
     return (
         <>
             <div class=" bg-base-200 m-12 rounded-lg pb-12">
