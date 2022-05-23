@@ -40,6 +40,7 @@ const Purchase = () => {
     if (isLoading) {
         return <Loading message='Tool Details Loading' />
     }
+    //place order function
     const placeOrder = () => {
         fetch('http://localhost:5000/placeOrder', {
             method: 'POST',
