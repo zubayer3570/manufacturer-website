@@ -1,9 +1,13 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useNavigationType, useParams } from 'react-router-dom';
+import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 
 const Purchase = () => {
+    const navigate = useNavigate()
+    const [user] = useAuthState(auth)
     const { id } = useParams()
     const [disable, setDisable] = useState(false)
     const { data, isLoading } = useQuery('toolDetails', () => (
@@ -42,13 +46,21 @@ const Purchase = () => {
     }
     //place order function
     const placeOrder = () => {
+        const order = {
+            _id: data._id,
+            email: user.email,
+            name: data.name,
+            price: data.price,
+            quantity: quantity
+        }
         fetch('http://localhost:5000/placeOrder', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify()
+            body: JSON.stringify({ order })
         })
+            .then(res => navigate('/'))
     }
     return (
         <>
@@ -59,14 +71,15 @@ const Purchase = () => {
                     <div className='font-bold'>
                         <h1 class="text-5xl">{data.name}</h1>
                         <p class="py-6">{data.description}</p>
-                        <p class="pb-2">Available Quantity: {data.availableQuantity}</p>
-                        <p className='mb-4'>Minimum Order Quantity: {data.minimumOrder}</p>
-                        <p className='pb-2'>How many do you want to buy?</p>
+                        <p>Available Quantity: {data.availableQuantity}</p>
+                        <p>Minimum Order Quantity: {data.minimumOrder}</p>
+                        <p className='mt-4'>Email: {user.email}</p>
+                        <p className='pt-4 pb-2'>How many do you want to buy?</p>
                         <input type='text' value={quantity || ''} onChange={(e) => setQuantity(e.target.value)} class="input input-bordered w-full max-w-xs" />
                         <br />
                         <p className='font-bold text-[red]'>{errorMessage}</p>
                         <br />
-                        <button disabled={disable} class="btn btn-primary">Place Order</button>
+                        <button onClick={placeOrder} disabled={disable} class="btn btn-primary">Place Order</button>
                         <button disabled={disable} class="btn btn-primary ml-4">Go to Payment</button>
                     </div>
                 </div>
