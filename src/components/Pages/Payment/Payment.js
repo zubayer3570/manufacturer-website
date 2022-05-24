@@ -13,7 +13,7 @@ const Payment = () => {
 
     //get the order
     const { data: order } = useQuery('getOrder', () =>
-        fetch(`http://localhost:5000/getPayment/${orderID}`)
+        fetch(`https://manufacturer-website.herokuapp.com/getPayment/${orderID}`)
             .then(res => res.json())
     )
 
@@ -22,7 +22,7 @@ const Payment = () => {
 
     //send price to server
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://manufacturer-website.herokuapp.com/create-payment-intent', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -71,7 +71,7 @@ const Payment = () => {
             console.log(paymentIntent)
             setCardErrorMessage('')
             setTransId(paymentIntent.id)
-            fetch('http://localhost:5000/updatePayment', {
+            fetch('https://manufacturer-website.herokuapp.com/updatePayment', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

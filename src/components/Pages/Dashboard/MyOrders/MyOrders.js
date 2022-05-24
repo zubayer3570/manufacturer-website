@@ -9,7 +9,7 @@ const MyOrders = () => {
     const navigate = useNavigate()
     const [user, userLoading] = useAuthState(auth)
     const { data: myOrders, isLoading, refetch } = useQuery('myOrders', () => (
-        fetch(`http://localhost:5000/myOrders/${user.email}`)
+        fetch(`https://manufacturer-website.herokuapp.com/myOrders/${user.email}`)
             .then(res => res.json())
     ))
     if (userLoading) {
@@ -19,7 +19,7 @@ const MyOrders = () => {
         return <Loading message='Data is loading' />
     }
     const cancelOrder = (id) => {
-        fetch('http://localhost:5000/cancelOrder', {
+        fetch('https://manufacturer-website.herokuapp.com/cancelOrder', {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

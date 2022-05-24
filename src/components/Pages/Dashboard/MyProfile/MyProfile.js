@@ -7,7 +7,7 @@ import Loading from '../../../Shared/Loading/Loading';
 const MyProfile = () => {
     const [user, userLoading] = useAuthState(auth)
     const { data: userData, isLoading } = useQuery('userProfile', () => (
-        fetch(`http://localhost:5000/userData/${user.email}`)
+        fetch(`https://manufacturer-website.herokuapp.com/userData/${user.email}`)
             .then(res => res.json())
     ))
     if (userLoading) {

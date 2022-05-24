@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 const useCheckAdmin = (email) => {
     const [userState, setUserState] = useState(false)
     useEffect(() => {
-        fetch('http://localhost:5000/checkAdmin', {
+        fetch('https://manufacturer-website.herokuapp.com/checkAdmin', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

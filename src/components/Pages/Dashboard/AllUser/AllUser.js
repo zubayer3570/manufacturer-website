@@ -4,14 +4,14 @@ import Loading from '../../../Shared/Loading/Loading';
 
 const AllUser = () => {
     const { data: allUsers, isLoading, refetch } = useQuery('allUsers', async () => (
-        fetch('http://localhost:5000/allUsers')
+        fetch('https://manufacturer-website.herokuapp.com/allUsers')
             .then(res => res.json())
     ))
     if (isLoading) {
         return <Loading message='All users loading' />
     }
     const makeAdmin = (email) => {
-        fetch('http://localhost:5000/makeAdmin', {
+        fetch('https://manufacturer-website.herokuapp.com/makeAdmin', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
