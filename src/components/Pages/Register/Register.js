@@ -33,7 +33,7 @@ const Register = () => {
                     headers: {
                         'content-type': 'application/json'
                     },
-                    body: JSON.stringify({ email: data.email })
+                    body: JSON.stringify({ email: data.email, name: data.name })
                 })
                     .then(res => navigate(from))
             })

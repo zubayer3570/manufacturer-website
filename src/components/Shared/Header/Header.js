@@ -4,10 +4,14 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
 import { signOut } from 'firebase/auth';
 import useCheckAdmin from '../../Hooks/useCheckAdmin';
+import Loading from '../Loading/Loading';
 
 const Header = () => {
     const [user, userLoading] = useAuthState(auth)
-    const [userState] = useCheckAdmin(user?.email)
+    const [userState] = useCheckAdmin(user?.email || 'demo@gmail.com')
+    if (userLoading) {
+        return <Loading message='User is Loading' />
+    }
     return (
         <div className="navbar justify-between">
             <div>

@@ -3,9 +3,9 @@ import { Link, Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
-        <div class="drawer drawer-mobile">
+        <div class="drawer drawer-mobile font-bold">
             <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content flex flex-col items-center justify-center">
+            <div class="drawer-content">
                 <label for="my-drawer-2" class="btn btn-primary drawer-button lg:hidden">Open drawer</label>
                 <Outlet />
             </div>

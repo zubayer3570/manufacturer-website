@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { useNavigate, useNavigationType, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 
@@ -47,11 +47,12 @@ const Purchase = () => {
     //place order function
     const placeOrder = () => {
         const order = {
-            _id: data._id,
+            userName: user.displayName,
             email: user.email,
-            name: data.name,
+            toolName: data.name,
+            quantity: quantity,
             price: data.price,
-            quantity: quantity
+            paid: false
         }
         fetch('http://localhost:5000/placeOrder', {
             method: 'POST',
@@ -60,7 +61,7 @@ const Purchase = () => {
             },
             body: JSON.stringify({ order })
         })
-            .then(res => navigate('/'))
+            .then(res => navigate('/dashboard/allOrders'))
     }
     return (
         <>

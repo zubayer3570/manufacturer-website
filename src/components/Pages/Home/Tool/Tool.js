@@ -9,7 +9,6 @@ const Tool = ({ tool }) => {
     const available = tool.availableQuantity
     const minimum = tool.minimumOrder
     const shortDes = tool.shortDes
-    console.log(tool._id)
     return (
         <div class="card bg-base-100 shadow-xl m-2 bg-[white]">
             <figure class="px-5 pt-10">
