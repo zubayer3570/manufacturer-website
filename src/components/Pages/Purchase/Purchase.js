@@ -61,7 +61,9 @@ const Purchase = () => {
             },
             body: JSON.stringify({ order })
         })
-            .then(res => navigate('/dashboard/allOrders'))
+            .then(res => res.json())
+            .then(data => navigate(`/payment/${data.orderID}`))
+
     }
     return (
         <>
@@ -81,7 +83,6 @@ const Purchase = () => {
                         <p className='font-bold text-[red]'>{errorMessage}</p>
                         <br />
                         <button onClick={placeOrder} disabled={disable} class="btn btn-primary">Place Order</button>
-                        <button disabled={disable} class="btn btn-primary ml-4">Go to Payment</button>
                     </div>
                 </div>
             </div>

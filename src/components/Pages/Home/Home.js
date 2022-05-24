@@ -1,5 +1,7 @@
 import React from 'react';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
+import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import Tool from './Tool/Tool';
 
@@ -11,6 +13,7 @@ const Home = () => {
     if (isLoading) {
         return <Loading message='Tools loading' />
     }
+
     return (
         <>
             <div>

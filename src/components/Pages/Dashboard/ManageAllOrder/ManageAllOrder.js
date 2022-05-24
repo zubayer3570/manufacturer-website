@@ -47,7 +47,7 @@ const ManageAllOrder = () => {
                                 <td>
                                     {
                                         order.paid ?
-                                            <p>Paid</p>
+                                            <p className='text-[green]'>Paid</p>
                                             :
                                             <button onClick={() => cancelOrder(order._id)} className='btn btn-dark font-bold'>Cancel Order</button>
                                     }

@@ -1,10 +1,12 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import auth from '../../../firebase.init';
-import Loading from '../../Shared/Loading/Loading';
+import { Navigate, useNavigate } from 'react-router-dom';
+import auth from '../../../../firebase.init';
+import Loading from '../../../Shared/Loading/Loading';
 
 const MyOrders = () => {
+    const navigate = useNavigate()
     const [user, userLoading] = useAuthState(auth)
     const { data: myOrders, isLoading, refetch } = useQuery('myOrders', () => (
         fetch(`http://localhost:5000/myOrders/${user.email}`)
@@ -27,7 +29,7 @@ const MyOrders = () => {
             .then(res => refetch())
     }
     return (
-        <div class="overflow-x-auto p-12">
+        <div class="overflow-x-auto p-4 lg:p-12">
             <table class="table w-full">
                 <thead>
                     <tr>
@@ -36,6 +38,7 @@ const MyOrders = () => {
                         <th>Unit Price</th>
                         <th>Quantity</th>
                         <th>Payment</th>
+                        <th>Cancel Order</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -46,14 +49,15 @@ const MyOrders = () => {
                                 <td>{order.toolName}</td>
                                 <td>{order.price}</td>
                                 <td>{order.quantity}</td>
-                                <td>
-                                    {
-                                        order.paid ?
-                                            <p className='text-[green]'>Paid</p>
-                                            :
-                                            <button onClick={() => cancelOrder(order._id)} className='btn btn-dark font-bold'>Cancel Order</button>
-                                    }
-                                </td>
+                                {
+                                    order.paid ?
+                                        <td><p className='text-[green]'>Paid</p></td>
+                                        :
+                                        <>
+                                            <td><button onClick={() => navigate(`/payment/${order._id}`)} className='btn btn-dark font-bold'>Pay</button></td>
+                                            <td><button onClick={() => cancelOrder(order._id)} className='btn btn-dark font-bold'>Cancel Order</button></td>
+                                        </>
+                                }
                             </tr>
                         ))
                     }

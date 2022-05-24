@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../firebase.init';
@@ -27,12 +27,6 @@ const Header = () => {
                             <>
                                 <li>{user.displayName}</li>
                                 <li><Link to='/'>Home</Link></li>
-                                {
-                                    userState ?
-                                        <li><Link to='/addTools'>Add tools</Link></li>
-                                        :
-                                        <li><Link to='/myOrders'>My orders</Link></li>
-                                }
                                 <li><Link to='/portfolio'>My Portfolio</Link></li>
                                 <li><Link to='/blogs'>Blogs</Link></li>
                                 <li><Link to='/dashboard'>Dashboard</Link></li>
@@ -56,12 +50,6 @@ const Header = () => {
                             <>
                                 <li><Link to='/'>{user.displayName}</Link></li>
                                 <li><Link to='/'>Home</Link></li>
-                                {
-                                    userState ?
-                                        <li><Link to='/addTools'>Add tools</Link></li>
-                                        :
-                                        <li><Link to='/myOrders'>My orders</Link></li>
-                                }
                                 <li><Link to='portfolio'>My Portfolio</Link></li>
                                 <li><Link to='Blogs'>Blogs</Link></li>
                                 <li><Link to='/dashboard'>Dashboard</Link></li>

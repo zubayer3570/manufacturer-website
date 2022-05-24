@@ -1,6 +1,5 @@
-import React, { useEffect, useState, useSyncExternalStore } from 'react';
-import { useQuery } from 'react-query';
-import Loading from '../Shared/Loading/Loading';
+import React, { useEffect, useState } from 'react';
+
 
 const useCheckAdmin = (email) => {
     const [userState, setUserState] = useState(false)
