@@ -47,7 +47,7 @@ const Register = () => {
                     phone: data.phone
                 }
                 updateProfile({ displayName, photoURL })
-                fetch("https://manufacturer-website.herokuapp.com/addUser", {
+                fetch("http://localhost:5000/addUser", {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

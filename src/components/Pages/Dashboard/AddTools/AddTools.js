@@ -25,7 +25,7 @@ const AddTools = () => {
                     shortDes: data.shortDes,
                     description: data.description
                 }
-                fetch('https://manufacturer-website.herokuapp.com/addTools', {
+                fetch('http://localhost:5000/addTools', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

@@ -7,7 +7,13 @@ import Tool from './Tool/Tool';
 
 const Home = () => {
     const { data: tools, isLoading } = useQuery('toolsData', () => (
-        fetch('https://manufacturer-website.herokuapp.com/tools')
+        fetch('http://localhost:5000/tools', {
+            method: 'GET',
+            headers: {
+                'content-type': 'application.json',
+                authorization: `Bearer ${localStorage.getItem('accessToken')}`
+            }
+        })
             .then(res => res.json())
     ))
     if (isLoading) {

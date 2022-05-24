@@ -14,12 +14,25 @@ const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => {
         signInWithEmailAndPassword(data.email, data.password)
+        const user = { email: data.email }
+        console.log(user)
+        fetch('http://localhost:5000/getToken', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ user })
+        })
+            .then(res => res.json())
+            .then(data => localStorage.setItem('accessToken', data.accessToken))
     }
     if (loading) {
         return <Loading message='Signing in' />
     }
     if (user) {
-        navigate(from, { replace: true })
+        if (localStorage.getItem('accessToken')) {
+            navigate(from, { replace: true })
+        }
     }
     return (
         <div className='mx-4 lg:mx-0'>

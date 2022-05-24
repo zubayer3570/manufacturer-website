@@ -4,14 +4,14 @@ import Loading from '../../../Shared/Loading/Loading';
 
 const ManageAllOrder = () => {
     const { data: allOrders, isLoading, refetch } = useQuery('orders', () => (
-        fetch('https://manufacturer-website.herokuapp.com/allOrders')
+        fetch('http://localhost:5000/allOrders')
             .then(res => res.json())
     ))
     if (isLoading) {
         return <Loading message='All users loading' />
     }
     const cancelOrder = (id) => {
-        fetch('https://manufacturer-website.herokuapp.com/cancelOrder', {
+        fetch('http://localhost:5000/cancelOrder', {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
