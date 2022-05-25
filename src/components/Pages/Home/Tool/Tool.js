@@ -10,9 +10,9 @@ const Tool = ({ tool }) => {
     const minimum = tool.minimumOrder
     const shortDes = tool.shortDes
     return (
-        <div class="card bg-base-100 shadow-xl m-2 bg-[white]">
-            <figure class="px-5 pt-10">
-                <img src={image} alt="Shoes" class="rounded-xl w-full" />
+        <div class=" bg-base-100 shadow-md m-2 bg-[white] flex rounded-lg">
+            <figure class="px-5 flex items-center">
+                <img src={image} alt="Shoes" class="rounded-xl w-[200px]" />
             </figure>
             <div class="card-body items-center">
                 <h2 class="card-title">{name}</h2>

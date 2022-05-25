@@ -27,9 +27,9 @@ const MyProfile = () => {
         e.preventDefault()
         const userCredential = {
             email: user.email,
-            name: e.target.name.value,
-            phone: e.target.phone.value,
-            address: e.target.address.value,
+            name: e.target.name.value || userData.name,
+            phone: e.target.phone.value || userData?.phone,
+            address: e.target.address.value || userData?.address,
         }
         fetch(`http://localhost:5000/updateProfile`, {
             method: 'POST',

@@ -22,7 +22,7 @@ const ManageAllOrder = () => {
         })
             .then(res => {
                 refetch()
-                toast()
+                toast('Order Cancelled')
             })
     }
     const ship = (id) => {

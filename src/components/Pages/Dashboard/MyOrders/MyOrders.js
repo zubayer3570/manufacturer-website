@@ -43,6 +43,7 @@ const MyOrders = () => {
                         <th>Tool Name</th>
                         <th>Unit Price</th>
                         <th>Quantity</th>
+                        <th>Status</th>
                         <th>Payment</th>
                         <th>Cancel Order</th>
                     </tr>
@@ -55,6 +56,12 @@ const MyOrders = () => {
                                 <td>{order.toolName}</td>
                                 <td>{order.price}</td>
                                 <td>{order.quantity}</td>
+                                <td>
+                                    {order?.status?.length === 4 ? <p className='text-[orange]'>{order.status}</p>
+                                        : order?.status?.length === 7 ? <p className='text-[green]'>{order.status}</p>
+                                            : <p className='text-[red]'>{order.status}</p>}
+                                </td>
+                                {console.log(order.status.length)}
                                 {
                                     order.paid ?
                                         <td><p className='text-[green]'>Paid</p></td>

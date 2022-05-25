@@ -16,6 +16,8 @@ import MyOrders from './components/Pages/Dashboard/MyOrders/MyOrders';
 import MyProfile from './components/Pages/Dashboard/MyProfile/MyProfile';
 import Payment from './components/Pages/Payment/Payment';
 import Footer from './components/Shared/Footer/Footer';
+import NotFound from './components/Pages/NotFound/NotFound';
+import ManageProducts from './components/Pages/Dashboard/ManageProducts/ManageProducts';
 
 function App() {
   return (
@@ -45,6 +47,7 @@ function App() {
           <Route path='addTools' element={<AddTools />}></Route>
           <Route path='myOrders' element={<MyOrders />}></Route>
           <Route path='allOrders' element={<ManageAllOrder />}></Route>
+          <Route path='manageProducts' element={<ManageProducts />}></Route>
         </Route>
         <Route path='/dashboard' element={
           <RequireAuth>
@@ -52,6 +55,7 @@ function App() {
           </RequireAuth>
         } />
         <Route path='/addTools' element={<AddTools />} />
+        <Route path='*' element={<NotFound />} />
       </Routes>
       <Footer />
     </>

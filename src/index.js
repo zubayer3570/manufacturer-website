@@ -7,6 +7,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
+import 'tw-elements';
 
 const queryClient = new QueryClient()
 const stripePromise = loadStripe('pk_test_51L1tk9Hl8mJ3Qhh07bjmxqo4qYdRo6DXZwPtfZ2jDKLP8RZlig2atCz2gKEXHigXAujYmHnpEGwBMBAFTSkKIN3x00kTbLpqnZ');

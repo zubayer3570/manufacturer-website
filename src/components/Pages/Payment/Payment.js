@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { useQuery } from 'react-query';
 const Payment = () => {
+    const navigate = useNavigate()
     const { orderID } = useParams()
     const [clientSecret, setClientSecret] = useState('')
     const stripe = useStripe()
@@ -78,6 +79,9 @@ const Payment = () => {
                 },
                 body: JSON.stringify({ orderID: orderID, transId: paymentIntent.id })
             })
+                .then(res => {
+                    navigate('/dashboard/myOrders')
+                })
         }
     }
 
