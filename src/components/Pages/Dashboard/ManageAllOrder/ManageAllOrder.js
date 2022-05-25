@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../../../Shared/Loading/Loading';
+import { ToastContainer, toast } from 'react-toastify';
 
 const ManageAllOrder = () => {
+    const [pending, setPending] = useState(true)
     const { data: allOrders, isLoading, refetch } = useQuery('orders', () => (
         fetch('http://localhost:5000/allOrders')
             .then(res => res.json())
@@ -18,6 +20,13 @@ const ManageAllOrder = () => {
             },
             body: JSON.stringify({ orderId: id })
         })
+            .then(res => {
+                refetch()
+                toast()
+            })
+    }
+    const ship = (id) => {
+        fetch(`http://localhost:5000/ship/${id}`)
             .then(res => refetch())
     }
     return (
@@ -47,7 +56,7 @@ const ManageAllOrder = () => {
                                 <td>
                                     {
                                         order.paid ?
-                                            <p className='text-[green]'>Paid</p>
+                                            order?.shipped ? <p className='font-bold text-[green]'>Shipped</p> : <button onClick={() => ship(order._id)} className='btn bg-green font-bold'>Ship?</button>
                                             :
                                             <button onClick={() => cancelOrder(order._id)} className='btn btn-dark font-bold'>Cancel Order</button>
                                     }
@@ -57,7 +66,8 @@ const ManageAllOrder = () => {
                     }
                 </tbody>
             </table>
-        </div>
+            <ToastContainer />
+        </div >
     );
 };
 

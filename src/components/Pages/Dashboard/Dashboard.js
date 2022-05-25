@@ -21,16 +21,16 @@ const Dashboard = () => {
             <div class="drawer-side">
                 <label for="my-drawer-2" class="drawer-overlay"></label>
                 <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
-                    <li><Link to=''>My Profile</Link></li>
+                    <li><Link to='/dashboard' className='shadow'>My Profile</Link></li>
                     {
                         userState ?
                             <>
-                                <li><Link to='allUsers'>All User</Link></li>
-                                <li><Link to='allOrders'>Manage All Orders</Link></li>
-                                <li><Link to='addTools'>Add a Tool</Link></li>
+                                <li><Link to='allUsers' className='shadow'>All User</Link></li>
+                                <li><Link to='allOrders' className='shadow'>Manage All Orders</Link></li>
+                                <li><Link to='addTools' className='shadow'>Add a Tool</Link></li>
                             </>
                             :
-                            <li><Link to='myOrders'>My Orders</Link></li>
+                            <li><Link to='myOrders' className='shadow'>My Orders</Link></li>
                     }
                 </ul>
 

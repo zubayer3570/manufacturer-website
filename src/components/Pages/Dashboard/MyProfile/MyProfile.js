@@ -25,7 +25,7 @@ const MyProfile = () => {
     return (
         <div class="hero min-h-screen bg-base-200">
             <div class="hero-content flex-col lg:flex-row">
-                <img src={userData.photoURL} class="max-w-sm rounded-lg shadow-2xl" alt='' />
+                <img src={userData.photoURL} class="max-w-sm rounded-lg shadow-2xl mt-[-200px] lg:mt-[0px]" alt='' />
                 <div>
                     <h1 class="text-2xl font-bold">Name: {userData.name}</h1>
                     <br />

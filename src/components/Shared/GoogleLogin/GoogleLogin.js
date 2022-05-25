@@ -8,10 +8,36 @@ const GoogleLogin = () => {
     const navigate = useNavigate()
     const location = useLocation()
     const from = location.state?.from.pathname || '/'
-    const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth)
+    const [signInWithGoogle, googleUser, loading, error] = useSignInWithGoogle(auth)
     let errorMessage;
-    if (user) {
-        navigate(from, { replace: true })
+    if (googleUser) {
+        const user = { email: googleUser.user.email }
+        fetch('http://localhost:5000/getToken', {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({ user })
+        })
+            .then(res => res.json())
+            .then(data => {
+                const userCredential = {
+                    name: googleUser.user.displayName,
+                    email: googleUser.user.email,
+                    photoURL: googleUser.user.photoURL
+                }
+                fetch("http://localhost:5000/addUser", {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json'
+                    },
+                    body: JSON.stringify({ userCredential })
+                })
+                    .then(res => {
+                        localStorage.setItem('accessToken', data.accessToken)
+                        navigate(from, { replace: true })
+                    })
+            })
     }
     if (loading) {
         return <Loading message='Signin in' />
