@@ -1,16 +1,24 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../../firebase.init';
+import Loading from '../../../Shared/Loading/Loading';
 
 const AddReview = () => {
+    const navigate = useNavigate()
     const { register, handleSubmit } = useForm();
-    const [user, loading] = useState(auth)
+    const [user, loading] = useAuthState(auth)
+    if (loading) {
+        return <Loading message='User is Loading' />
+    }
     const onSubmit = (data) => {
         const review = {
             name: user.displayName,
             rating: data.rating,
             thoughts: data.thoughts
         }
+        console.log(review)
         fetch('http://localhost:5000/addReview', {
             method: 'POST',
             headers: {
@@ -18,6 +26,7 @@ const AddReview = () => {
             },
             body: JSON.stringify({ review })
         })
+            .then(res => navigate('/'))
     }
     return (
         <div className='px-4 lg:p-0'>

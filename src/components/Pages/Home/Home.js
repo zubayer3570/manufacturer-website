@@ -3,6 +3,7 @@ import { useQuery } from 'react-query';
 import Loading from '../../Shared/Loading/Loading';
 import BusinessSummary from './BusinessSummary/BusinessSummary';
 import History from './History/History';
+import Reviews from './Reviews/Reviews';
 import Tool from './Tool/Tool';
 import TopProducts from './TopProducts/TopProducts';
 
@@ -35,6 +36,7 @@ const Home = () => {
             </div >
             <TopProducts />
             <History />
+            <Reviews />
         </>
     );
 };

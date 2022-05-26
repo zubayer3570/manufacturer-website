@@ -2,7 +2,8 @@ import React from 'react';
 
 const MyPortfolio = () => {
     return (
-        <div className='p-24 font-bold'>
+        <div className='px-24 font-bold'>
+            <h1 className='text-center text-4xl font-bold mt-12 mb-8'>Portfolio</h1>
             <p className='text-xl'>Name: MD Mahamudul Hasan Zubayer</p>
             <p className='text-xl'>Email: zubayer3570@gmail.com</p>
             <p className='text-xl'>Education: Bachelor of Science in Computer Science and engineering (1st year)</p>
