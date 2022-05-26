@@ -47,26 +47,26 @@ const MyProfile = () => {
     }
     return (
         <>
-            <div class="hero min-h-screen bg-base-200">
-                <div class="hero-content flex-col lg:flex-row">
-                    <img src={userData.photoURL} class="rounded-lg shadow-2xl w-[300px] px-8" alt='' />
+            <div className="hero min-h-screen bg-base-200">
+                <div className="hero-content flex-col lg:flex-row">
+                    <img src={userData.photoURL} className="rounded-lg shadow-2xl w-[300px] px-8" alt='' />
                     <div>
-                        <h1 class="text-xl font-bold">Name: {userData.name}</h1>
+                        <h1 className="text-xl font-bold">Name: {userData.name}</h1>
                         <br />
-                        <h1 class="text-xl font-bold">Email: {userData.email}</h1>
+                        <h1 className="text-xl font-bold">Email: {userData.email}</h1>
                         <br />
-                        <h1 class="text-xl font-bold">Phone: {userData?.phone}</h1>
+                        <h1 className="text-xl font-bold">Phone: {userData?.phone}</h1>
                         <br />
                         {
                             userData?.address ?
                                 <>
-                                    <h1 class="text-xl font-bold">Addres: {userData?.address}</h1>
+                                    <h1 className="text-xl font-bold">Addres: {userData?.address}</h1>
                                     <br />
                                 </>
                                 :
                                 ''
                         }
-                        <label for="update-profile-modal" onClick={() => { setModalShow(true) }} class="btn modal-button">Edit Profile</label>
+                        <label for="update-profile-modal" onClick={() => { setModalShow(true) }} className="btn modal-button">Edit Profile</label>
                     </div>
                 </div>
             </div>
@@ -74,15 +74,15 @@ const MyProfile = () => {
             {
                 modalShow ?
                     <>
-                        <input type="checkbox" id="update-profile-modal" class="modal-toggle" />
-                        <div class="modal modal-bottom sm:modal-middle">
-                            <div class="modal-box relative">
-                                <label for="update-profile-modal" class="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+                        <input type="checkbox" id="update-profile-modal" className="modal-toggle" />
+                        <div className="modal modal-bottom sm:modal-middle">
+                            <div className="modal-box relative">
+                                <label for="update-profile-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                                 <form onSubmit={updateProfile}>
-                                    <input type="text" name='name' placeholder="Update Your Name" class="my-2 input input-bordered w-full max-w-xs" />
-                                    <input type="text" name='phone' placeholder="Enter Phone" class="my-2 input input-bordered w-full max-w-xs" />
-                                    <input type="text" name='address' placeholder="Enter address" class="my-2 input input-bordered w-full max-w-xs" />
-                                    <div class="modal-action">
+                                    <input type="text" name='name' placeholder="Update Your Name" className="my-2 input input-bordered w-full max-w-xs" />
+                                    <input type="text" name='phone' placeholder="Enter Phone" className="my-2 input input-bordered w-full max-w-xs" />
+                                    <input type="text" name='address' placeholder="Enter address" className="my-2 input input-bordered w-full max-w-xs" />
+                                    <div className="modal-action">
                                         <input for="update-profile-modal" type="submit" value='Update Profile' className='btn btn-dark' ></input>
                                     </div>
                                 </form>

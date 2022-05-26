@@ -12,15 +12,15 @@ const Dashboard = () => {
         return <Loading message='User is Loading' />
     }
     return (
-        <div class="drawer drawer-mobile font-bold">
-            <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-            <div class="drawer-content">
-                <label for="my-drawer-2" class="btn btn-primary drawer-button ml-4 lg:hidden">Dashboard Menu</label>
+        <div className="drawer drawer-mobile font-bold">
+            <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
+            <div className="drawer-content">
+                <label for="my-drawer-2" className="btn btn-primary drawer-button ml-4 lg:hidden">Dashboard Menu</label>
                 <Outlet />
             </div>
-            <div class="drawer-side">
-                <label for="my-drawer-2" class="drawer-overlay"></label>
-                <ul class="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
+            <div className="drawer-side">
+                <label for="my-drawer-2" className="drawer-overlay"></label>
+                <ul className="menu p-4 overflow-y-auto w-80 bg-base-100 text-base-content">
                     <li><Link to='/dashboard' className='shadow'>My Profile</Link></li>
                     {
                         userState ?

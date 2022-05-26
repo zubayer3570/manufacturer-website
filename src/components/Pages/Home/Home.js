@@ -1,7 +1,5 @@
 import React from 'react';
-import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import auth from '../../../firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import BusinessSummary from './BusinessSummary/BusinessSummary';
 import History from './History/History';
@@ -30,7 +28,7 @@ const Home = () => {
             </div>
             <BusinessSummary />
             <h1 className='text-2xl font-bold text-center mt-8'>Tools</h1>
-            < div className='grid grid-cols-2 p-8' >
+            < div className='grid grid-cols-1 lg:grid-cols-2 p-8' >
                 {
                     tools?.map(tool => <Tool key={tool._id} tool={tool} />)
                 }

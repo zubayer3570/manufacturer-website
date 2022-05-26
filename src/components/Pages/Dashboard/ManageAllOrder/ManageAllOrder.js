@@ -1,10 +1,9 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useQuery } from 'react-query';
 import Loading from '../../../Shared/Loading/Loading';
 import { ToastContainer, toast } from 'react-toastify';
 
 const ManageAllOrder = () => {
-    const [pending, setPending] = useState(true)
     const { data: allOrders, isLoading, refetch } = useQuery('orders', () => (
         fetch('http://localhost:5000/allOrders')
             .then(res => res.json())
@@ -30,8 +29,8 @@ const ManageAllOrder = () => {
             .then(res => refetch())
     }
     return (
-        <div class="overflow-x-auto">
-            <table class="table w-full">
+        <div className="overflow-x-auto">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th></th>
@@ -41,6 +40,7 @@ const ManageAllOrder = () => {
                         <th>Unit Price</th>
                         <th>Quantity</th>
                         <th>Payment</th>
+                        <th>status</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -56,10 +56,16 @@ const ManageAllOrder = () => {
                                 <td>
                                     {
                                         order.paid ?
-                                            order?.shipped ? <p className='font-bold text-[green]'>Shipped</p> : <button onClick={() => ship(order._id)} className='btn bg-green font-bold'>Ship?</button>
+                                            <p className='font-bold text-[green]'>Paid</p>
+                                            // order?.shipped ? <p className='font-bold text-[green]'>Shipped</p> : <button onClick={() => ship(order._id)} className='btn bg-green font-bold'>Ship?</button>
                                             :
                                             <button onClick={() => cancelOrder(order._id)} className='btn btn-dark font-bold'>Cancel Order</button>
                                     }
+                                </td>
+                                <td>
+                                    {order?.status?.length === 4 ? <button onClick={() => ship(order._id)} className='btn bg-green font-bold'>Ship?</button>
+                                        : order?.status?.length === 7 ? <p className='text-[green]'>{order.status}</p>
+                                            : <p className='text-[red]'>{order.status}</p>}
                                 </td>
                             </tr>
                         ))

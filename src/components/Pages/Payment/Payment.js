@@ -10,7 +10,6 @@ const Payment = () => {
     const elements = useElements()
     const [cardErrorMessage, setCardErrorMessage] = useState('')
     const [success, setSuccess] = useState('')
-    const [transId, setTransId] = useState('')
 
     //get the order
     const { data: order } = useQuery('getOrder', () =>
@@ -71,13 +70,12 @@ const Payment = () => {
             setSuccess(`Your Payment is Successful, Transaction Id: ${paymentIntent.id}`)
             console.log(paymentIntent)
             setCardErrorMessage('')
-            setTransId(paymentIntent.id)
             fetch('http://localhost:5000/updatePayment', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
                 },
-                body: JSON.stringify({ orderID: orderID, transId: paymentIntent.id })
+                body: JSON.stringify({ orderID: orderID, transId: paymentIntent.id, paymentMethod: paymentMethod })
             })
                 .then(res => {
                     navigate('/dashboard/myOrders')
@@ -88,7 +86,13 @@ const Payment = () => {
 
     return (
         <>
-            <form onSubmit={handleSubmit} className='m-auto w-[90%] lg:w-[40%] h-[300px] my-12 px-20 pt-8 shadow-lg rounded-lg'>
+            <h1 className='text-4xl font-bold text-center mt-20 mb-8'>Payment</h1>
+            <form onSubmit={handleSubmit} className='m-auto w-[90%] lg:w-[40%]  mb-12 p-8 shadow-lg rounded-lg'>
+                <p className='font-bold text-xl mb-4'>Name: <span className='text-orange-500'>{order?.userName}</span></p>
+                <p className='font-bold text-xl mb-4'>Email: <span className='text-orange-500'>{order?.email}</span> </p>
+                <p className='font-bold text-xl mb-4'>Tool Name: <span className='text-orange-500'>{order?.toolName}</span> </p>
+                <p className='font-bold text-xl mb-4'>Unit Price: <span className='text-orange-500'>{order?.price}</span> </p>
+                <p className='font-bold text-xl mb-4'>Quantity: <span className='text-orange-500'>{order?.quantity}</span> </p>
                 <p className='font-bold text-xl text-red-500 mb-8'>Bill: {price} USD</p>
                 <CardElement
                     options={{

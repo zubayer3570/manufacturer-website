@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
 import { useNavigate, useParams } from 'react-router-dom';
@@ -67,22 +67,22 @@ const Purchase = () => {
     }
     return (
         <>
-            <div class=" bg-base-200 m-12 rounded-lg pb-12">
-                <h1 class="text-3xl font-bold p-8 text-center">Tool Details</h1>
+            <div className=" bg-base-200 m-12 rounded-lg pb-12">
+                <h1 className="text-3xl font-bold p-8 text-center">Tool Details</h1>
                 <div className='hero-content flex-col lg:flex-row px-20'>
-                    <img src={data.imgUrl} class="max-w-sm rounded-lg shadow-2xl mr-20" alt='' />
+                    <img src={data.imgUrl} className="max-w-sm rounded-lg shadow-2xl mr-20" alt='' />
                     <div className='font-bold'>
-                        <h1 class="text-5xl">{data.name}</h1>
-                        <p class="py-6">{data.description}</p>
+                        <h1 className="text-5xl">{data.name}</h1>
+                        <p className="py-6">{data.description}</p>
                         <p>Available Quantity: {data.availableQuantity}</p>
                         <p>Minimum Order Quantity: {data.minimumOrder}</p>
                         <p className='mt-4'>Email: {user.email}</p>
                         <p className='pt-4 pb-2'>How many do you want to buy?</p>
-                        <input type='text' value={quantity || ''} onChange={(e) => setQuantity(e.target.value)} class="input input-bordered w-full max-w-xs" />
+                        <input type='text' value={quantity || ''} onChange={(e) => setQuantity(e.target.value)} className="input input-bordered w-full max-w-xs" />
                         <br />
                         <p className='font-bold text-[red]'>{errorMessage}</p>
                         <br />
-                        <button onClick={placeOrder} disabled={disable} class="btn btn-primary">Place Order</button>
+                        <button onClick={placeOrder} disabled={disable} className="btn btn-primary">Place Order</button>
                     </div>
                 </div>
             </div>

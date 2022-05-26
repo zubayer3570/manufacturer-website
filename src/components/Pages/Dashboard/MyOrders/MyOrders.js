@@ -1,7 +1,7 @@
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useQuery } from 'react-query';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import auth from '../../../../firebase.init';
 import Loading from '../../../Shared/Loading/Loading';
 
@@ -35,8 +35,8 @@ const MyOrders = () => {
             .then(res => refetch())
     }
     return (
-        <div class="overflow-x-auto p-4 lg:p-12">
-            <table class="table w-full">
+        <div className="overflow-x-auto p-4 lg:p-12">
+            <table className="table w-full">
                 <thead>
                     <tr>
                         <th></th>
@@ -61,7 +61,6 @@ const MyOrders = () => {
                                         : order?.status?.length === 7 ? <p className='text-[green]'>{order.status}</p>
                                             : <p className='text-[red]'>{order.status}</p>}
                                 </td>
-                                {console.log(order.status.length)}
                                 {
                                     order.paid ?
                                         <td><p className='text-[green]'>Paid</p></td>
