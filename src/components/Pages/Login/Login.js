@@ -16,7 +16,7 @@ const Login = () => {
         signInWithEmailAndPassword(data.email, data.password)
         const user = { email: data.email }
         console.log(user)
-        fetch('http://localhost:5000/getToken', {
+        fetch('https://manufacturer-website.herokuapp.com/getToken', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

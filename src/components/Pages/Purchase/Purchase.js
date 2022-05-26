@@ -11,7 +11,7 @@ const Purchase = () => {
     const { id } = useParams()
     const [disable, setDisable] = useState(false)
     const { data, isLoading } = useQuery('toolDetails', () => (
-        fetch(`http://localhost:5000/toolDetails/${id}`)
+        fetch(`https://manufacturer-website.herokuapp.com/toolDetails/${id}`)
             .then(res => res.json())
     ))
     const availableQuantity = data?.availableQuantity
@@ -54,7 +54,7 @@ const Purchase = () => {
             price: data.price,
             paid: false
         }
-        fetch('http://localhost:5000/placeOrder', {
+        fetch('https://manufacturer-website.herokuapp.com/placeOrder', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

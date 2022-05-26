@@ -7,7 +7,7 @@ const ManageProducts = () => {
     const [toolID, setToolID] = useState('')
     const [modal, setModal] = useState(false)
     const { data: tools, isLoading, refetch } = useQuery('toolsData', () => (
-        fetch('http://localhost:5000/tools', {
+        fetch('https://manufacturer-website.herokuapp.com/tools', {
             method: 'GET',
             headers: {
                 'content-type': 'application.json',
@@ -20,7 +20,7 @@ const ManageProducts = () => {
         return <Loading message='Poducts loading' />
     }
     const deleteTool = () => {
-        fetch(`http://localhost:5000/deleteTool/${toolID}`, {
+        fetch(`https://manufacturer-website.herokuapp.com/deleteTool/${toolID}`, {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'

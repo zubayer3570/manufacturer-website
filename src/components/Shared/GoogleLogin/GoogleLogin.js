@@ -12,7 +12,7 @@ const GoogleLogin = () => {
     let errorMessage;
     if (googleUser) {
         const user = { email: googleUser.user.email }
-        fetch('http://localhost:5000/getToken', {
+        fetch('https://manufacturer-website.herokuapp.com/getToken', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -26,7 +26,7 @@ const GoogleLogin = () => {
                     email: googleUser.user.email,
                     photoURL: googleUser.user.photoURL
                 }
-                fetch("http://localhost:5000/addUser", {
+                fetch("https://manufacturer-website.herokuapp.com/addUser", {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

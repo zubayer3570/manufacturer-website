@@ -9,7 +9,7 @@ import TopProducts from './TopProducts/TopProducts';
 
 const Home = () => {
     const { data: tools, isLoading } = useQuery('toolsData', () => (
-        fetch('http://localhost:5000/tools', {
+        fetch('https://manufacturer-website.herokuapp.com/tools', {
             method: 'GET',
             headers: {
                 'content-type': 'application.json',

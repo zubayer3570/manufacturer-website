@@ -8,7 +8,7 @@ const MyProfile = () => {
     const [modalShow, setModalShow] = useState(false)
     const [user, userLoading] = useAuthState(auth)
     const { data: userData, isLoading, refetch } = useQuery('userProfile', () => (
-        fetch(`http://localhost:5000/userData/${user.email}`, {
+        fetch(`https://manufacturer-website.herokuapp.com/userData/${user.email}`, {
             method: 'GET',
             headers: {
                 'content-type': 'application/json',
@@ -32,7 +32,7 @@ const MyProfile = () => {
             address: e.target.address.value || userData?.address,
             education: e.target.education.value || userData?.education
         }
-        fetch(`http://localhost:5000/updateProfile`, {
+        fetch(`https://manufacturer-website.herokuapp.com/updateProfile`, {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

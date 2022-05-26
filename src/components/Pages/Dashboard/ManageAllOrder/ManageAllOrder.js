@@ -5,14 +5,14 @@ import { ToastContainer, toast } from 'react-toastify';
 
 const ManageAllOrder = () => {
     const { data: allOrders, isLoading, refetch } = useQuery('orders', () => (
-        fetch('http://localhost:5000/allOrders')
+        fetch('https://manufacturer-website.herokuapp.com/allOrders')
             .then(res => res.json())
     ))
     if (isLoading) {
         return <Loading message='All users loading' />
     }
     const cancelOrder = (id) => {
-        fetch('http://localhost:5000/cancelOrder', {
+        fetch('https://manufacturer-website.herokuapp.com/cancelOrder', {
             method: 'DELETE',
             headers: {
                 'content-type': 'application/json'
@@ -25,7 +25,7 @@ const ManageAllOrder = () => {
             })
     }
     const ship = (id) => {
-        fetch(`http://localhost:5000/ship/${id}`)
+        fetch(`https://manufacturer-website.herokuapp.com/ship/${id}`)
             .then(res => refetch())
     }
     return (

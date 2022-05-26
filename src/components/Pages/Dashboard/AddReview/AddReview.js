@@ -19,7 +19,7 @@ const AddReview = () => {
             thoughts: data.thoughts
         }
         console.log(review)
-        fetch('http://localhost:5000/addReview', {
+        fetch('https://manufacturer-website.herokuapp.com/addReview', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
