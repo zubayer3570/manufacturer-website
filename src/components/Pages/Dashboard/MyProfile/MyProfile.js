@@ -30,6 +30,7 @@ const MyProfile = () => {
             name: e.target.name.value || userData.name,
             phone: e.target.phone.value || userData?.phone,
             address: e.target.address.value || userData?.address,
+            education: e.target.education.value || userData?.education
         }
         fetch(`http://localhost:5000/updateProfile`, {
             method: 'POST',
@@ -57,6 +58,16 @@ const MyProfile = () => {
                         <br />
                         <h1 className="text-xl font-bold">Phone: {userData?.phone}</h1>
                         <br />
+
+                        {
+                            userData?.education ?
+                                <>
+                                    <h1 className="text-xl font-bold">Education: {userData?.education}</h1>
+                                    <br />
+                                </>
+                                :
+                                ''
+                        }
                         {
                             userData?.address ?
                                 <>
@@ -82,6 +93,7 @@ const MyProfile = () => {
                                     <input type="text" name='name' placeholder="Update Your Name" className="my-2 input input-bordered w-full max-w-xs" />
                                     <input type="text" name='phone' placeholder="Enter Phone" className="my-2 input input-bordered w-full max-w-xs" />
                                     <input type="text" name='address' placeholder="Enter address" className="my-2 input input-bordered w-full max-w-xs" />
+                                    <input type="text" name='education' placeholder="Enter Your Education" className="my-2 input input-bordered w-full max-w-xs" />
                                     <div className="modal-action">
                                         <input for="update-profile-modal" type="submit" value='Update Profile' className='btn btn-dark' ></input>
                                     </div>
