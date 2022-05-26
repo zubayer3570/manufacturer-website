@@ -3,7 +3,7 @@ import { useQuery } from 'react-query';
 import Loading from '../../../Shared/Loading/Loading';
 
 const Reviews = () => {
-    const { data: reviews, isLoading, refetch } = useQuery('reviews', () =>
+    const { data: reviews, isLoading } = useQuery('reviews', () =>
         fetch('http://localhost:5000/getReview')
             .then(res => res.json())
     )
